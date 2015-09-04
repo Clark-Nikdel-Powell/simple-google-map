@@ -1,0 +1,26 @@
+.formField {
+	width: 60%;
+	padding: 5px 0px 10px 0px;
+}
+.form-table input[type="text"], .form-table textarea {
+	width: 50%;
+}
+.form-table th {
+	width: 150px;
+}
+#SGMcss {
+	display: block;
+	margin-top: 8px;
+	width: 93%;
+}
+#CNPlink {
+	display: block;
+	float: left;
+	background-image: url(/wp-content/plugins/simple-google-map/CNP.gif);
+	width: 31px;
+	height: 29px;
+	margin: 16px 8px 0 0;
+}
+#CNPlink:hover {
+	background-position: 0px -29px;
+}
