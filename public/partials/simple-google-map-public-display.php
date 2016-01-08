@@ -13,7 +13,6 @@
  */
 ?>
 
-<script type='text/javascript' src='//maps.google.com/maps/api/js?sensor=false'></script>
 <script type='text/javascript'>
 	function makeMap() {
 		var latlng = new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lng; ?>)
@@ -29,7 +28,7 @@
 		};
 		var map = new google.maps.Map(document.getElementById('SGM'), myOptions);
 		
-		var contentString = '<div class=\"infoWindow\"><?php echo $content.$directionsto ?></div>';
+		var contentString = '<div class=\"infoWindow\"><?php echo $content.$directionsto.$directionsForm; ?></div>';
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
 		});

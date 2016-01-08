@@ -27,7 +27,7 @@ class Simple_Google_Map_Public {
 	 *
 	 * @since    3.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string $plugin_name The ID of this plugin.
 	 */
 	private $plugin_name;
 
@@ -36,7 +36,7 @@ class Simple_Google_Map_Public {
 	 *
 	 * @since    3.0.0
 	 * @access   protected
-	 * @var      string    $plugin_path    The string path of this plugin.
+	 * @var      string $plugin_path The string path of this plugin.
 	 */
 	protected $plugin_path;
 
@@ -45,7 +45,7 @@ class Simple_Google_Map_Public {
 	 *
 	 * @since    3.0.0
 	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @var      string $version The current version of this plugin.
 	 */
 	private $version;
 
@@ -53,49 +53,72 @@ class Simple_Google_Map_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    3.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 *
+	 * @param      string $plugin_name The name of the plugin.
+	 * @param      string $version The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
+
+	}
+
+	/**
+	 * Enqueue scripts
+	 *
+	 * @since 3.1.0
+	 */
+	public function enqueue_scripts() {
+
+		global $post;
+		if ( has_shortcode( $post->post_content, 'SGM' ) || is_active_widget( false, false, 'simple-google-map-widget', true ) ) {
+			wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js' );
+		}
 
 	}
 
 	/**
 	 * Output CSS into header
-	 * 
+	 *
 	 * @since    3.0.0
 	 */
 	public function output_css() {
 
 		$SGMoptions = get_option( 'SGMoptions' );
-		if ( isset($SGMoptions['nostyle']) ) return;
+		if ( isset( $SGMoptions['nostyle'] ) ) {
+			return;
+		}
 
 		echo "<!-- styles for Simple Google Map -->\n<style type='text/css'>\n";
-		echo get_option('SGMcss');
+		echo get_option( 'SGMcss' );
 		echo "\n</style>\n<!-- end styles for Simple Google Map -->\n";
 
 	}
 
 	/**
 	 * Output CSS into header
-	 * 
+	 *
 	 * @since    3.0.0
 	 */
 	public function map( $atts ) {
 
-		$SGMoptions = get_option('SGMoptions'); // get options defined in admin page
+		$SGMoptions = get_option( 'SGMoptions' ); // get options defined in admin page
 
-		$lat = isset($atts['lat']) ? $atts['lat'] : '0';
-		$lng = isset($atts['lng']) ? $atts['lng'] : '0';
-		$zoom = isset($atts['zoom']) ? $atts['zoom'] : $SGMoptions['zoom'];
-		$type = isset($atts['type']) ? strtoupper($atts['type']) : $SGMoptions['type'];
-		$content = isset($atts['content']) ? $atts['content'] : $SGMoptions['content'];
-		$directionsto = isset($atts['directionsto']) ? $atts['directionsto'] : '';
+		$lat          = isset( $atts['lat'] ) ? $atts['lat'] : '0';
+		$lng          = isset( $atts['lng'] ) ? $atts['lng'] : '0';
+		$zoom         = isset( $atts['zoom'] ) ? $atts['zoom'] : $SGMoptions['zoom'];
+		$type         = isset( $atts['type'] ) ? strtoupper( $atts['type'] ) : $SGMoptions['type'];
+		$content      = isset( $atts['content'] ) ? $atts['content'] : $SGMoptions['content'];
+		$directionsto = isset( $atts['directionsto'] ) ? $atts['directionsto'] : '';
 
-		require_once plugin_dir_path( dirname(__FILE__) ).'public/partials/simple-google-map-public-display.php';
+		$content        = htmlspecialchars_decode( $content );
+		$directionsForm = '';
+		if ( $directionsto ) {
+			$directionsForm = "<form method=\"get\" action=\"//maps.google.com/maps\"><input type=\"hidden\" name=\"daddr\" value=\"" . $directionsto . "\" /><input type=\"text\" class=\"text\" name=\"saddr\" /><input type=\"submit\" class=\"submit\" value=\"Directions\" /></form>";
+		}
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/simple-google-map-public-display.php';
 
 	}
 
