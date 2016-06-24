@@ -195,6 +195,7 @@ class Simple_Google_Map {
 
 		$plugin_public = new Simple_Google_Map_Public( $this->get_plugin_name(), $this->get_version() );
 
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'wp_head', $plugin_public, 'output_css' );
 
 		$this->loader->add_shortcode( 'SGM', $plugin_public, 'map' );
