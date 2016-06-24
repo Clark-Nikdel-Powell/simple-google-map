@@ -35,7 +35,7 @@ class Simple_Google_Map {
 	 * @since    3.0.0
 	 * @access   protected
 	 */
-	protected static $instance = NULL;
+	protected static $instance = null;
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -251,5 +251,4 @@ class Simple_Google_Map {
 	public function get_plugin_path() {
 		return $this->plugin_path;
 	}
-
 }

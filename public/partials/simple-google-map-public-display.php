@@ -15,7 +15,7 @@
 
 <script type='text/javascript'>
 	function makeMap() {
-		var latlng = new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lng; ?>)
+		var latlng = new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lng; ?>);
 		
 		var myOptions = {
 			zoom: <?php echo $zoom; ?>,
@@ -28,9 +28,9 @@
 		};
 		var map = new google.maps.Map(document.getElementById('SGM'), myOptions);
 		
-		var contentString = '<div class=\"infoWindow\"><?php echo $content.$directionsto.$directionsForm; ?></div>';
+		var contentstring = '<div class=\"infoWindow\"><?php echo $content . $directions_to . $directions_form; ?></div>';
 		var infowindow = new google.maps.InfoWindow({
-			content: contentString
+			content: contentstring
 		});
 		
 		var marker = new google.maps.Marker({

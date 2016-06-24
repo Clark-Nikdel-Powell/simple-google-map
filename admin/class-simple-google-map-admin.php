@@ -27,7 +27,7 @@ class Simple_Google_Map_Admin {
 	 *
 	 * @since    3.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string $plugin_name The ID of this plugin.
 	 */
 	private $plugin_name;
 
@@ -36,7 +36,7 @@ class Simple_Google_Map_Admin {
 	 *
 	 * @since    3.0.0
 	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @var      string $version The current version of this plugin.
 	 */
 	private $version;
 
@@ -45,27 +45,28 @@ class Simple_Google_Map_Admin {
 	 *
 	 * @since    3.0.0
 	 * @access   private
-	 * @var      string    $defaultOptions    The current default options of this plugin.
+	 * @var      string $default_options The current default options of this plugin.
 	 */
-		private $defaultOptions;
+	private $default_options;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    3.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 *
+	 * @param      string $plugin_name The name of this plugin.
+	 * @param      string $version     The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
-		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-		$this->defaultOptions = array(
-			'zoom' => '12', 
-			'type' => 'ROADMAP', 
-			'directionsto' => '', 
-			'content' => ''
-		);
+		$this->plugin_name     = $plugin_name;
+		$this->version         = $version;
+		$this->default_options = [
+			'zoom'         => '12',
+			'type'         => 'ROADMAP',
+			'directionsto' => '',
+			'content'      => '',
+		];
 
 	}
 
@@ -76,7 +77,7 @@ class Simple_Google_Map_Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/simple-google-map-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/simple-google-map-admin.css', [], $this->version, 'all' );
 
 	}
 
@@ -87,51 +88,52 @@ class Simple_Google_Map_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/simple-google-map-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/simple-google-map-admin.js', [ 'jquery' ], $this->version, false );
 
 	}
 
 	public function plugin_menu() {
 
-		add_options_page('Simple Google Map', 'Simple Google Map', 'activate_plugins', 'simple-google-map', array( $this, 'plugin_options' ) );
+		add_options_page( 'Simple Google Map', 'Simple Google Map', 'activate_plugins', 'simple-google-map', [
+			$this,
+			'plugin_options',
+		] );
 
 	}
 
 	public function register_widgets() {
 
 		register_widget( 'Simple_Google_Map_Widget' );
-		
+
 	}
 
 	public function plugin_options() {
 
-		if ( isset($_POST['submit']) ) {
+		if ( isset( $_POST['submit'] ) ) {
 
-			$new_options['zoom'] = is_numeric($_POST['zoom']) ? sanitize_text_field( $_POST['zoom'] ) : '';
-			$new_options['type'] = strtoupper( sanitize_text_field( $_POST['type'] ) );
+			$new_options['zoom']    = is_numeric( $_POST['zoom'] ) ? sanitize_text_field( $_POST['zoom'] ) : '';
+			$new_options['type']    = strtoupper( sanitize_text_field( $_POST['type'] ) );
 			$new_options['content'] = $_POST['content'];
-			if ( isset($_POST['editCSS']) ) {
+			if ( isset( $_POST['editCSS'] ) ) {
 				$new_options['editCSS'] = $_POST['editCSS'];
 			}
-			if ( isset($_POST['nostyle']) ) {
+			if ( isset( $_POST['nostyle'] ) ) {
 				$new_options['nostyle'] = $_POST['nostyle'];
 			}
 
-			$SGMoptions = wp_parse_args( array_filter($new_options), $this->defaultOptions );
-			
-			update_option('SGMoptions', $SGMoptions);
+			$sgm_options = wp_parse_args( array_filter( $new_options ), $this->default_options );
 
-			$SGMcss = $_POST['css'];
-			update_option('SGMcss', $SGMcss);
+			update_option( 'SGMoptions', $sgm_options );
+
+			$sgm_css = $_POST['css'];
+			update_option( 'SGMcss', $sgm_css );
 
 			$message = '<div id="message" class="updated"><p>Simple Google Map settings updated.</p></div>';
 		} else {
-			$SGMoptions = get_option('SGMoptions');
-			$SGMcss = get_option('SGMcss');
+			$sgm_options = get_option( 'SGMoptions' );
+			$sgm_css     = get_option( 'SGMcss' );
 		}
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/simple-google-map-admin-display.php';
-
 	}
-
 }

@@ -31,15 +31,15 @@ class Simple_Google_Map_Activator {
 	 */
 	public static function activate() {
 
-		$SGMdefaults = array('zoom'=>'12', 'type'=>'ROADMAP', 'directionsto'=>'', 'content'=>'');
-		update_option('SGMoptions', $SGMdefaults);
+		$sgm_defaults = [
+			'zoom'         => '12',
+			'type'         => 'ROADMAP',
+			'directionsto' => '',
+			'content'      => '',
+		];
+		update_option( 'SGMoptions', $sgm_defaults );
 
-		$SGMcss = "#SGM {width:100%; height:300px;}
-#SGM .infoWindow {line-height:13px; font-size:10px;}
-#SGM input {margin:4px 4px 0 0; font-size:10px;}
-#SGM input.text {border:solid 1px #ccc; background-color:#fff; padding:2px;}";
-		update_option('SGMcss', $SGMcss);
-
+		$sgm_css = '#SGM {width:100%; height:300px;}#SGM .infoWindow {line-height:13px; font-size:10px;}#SGM input {margin:4px 4px 0 0; font-size:10px;}#SGM input.text {border:solid 1px #ccc; background-color:#fff; padding:2px;}';
+		update_option( 'SGMcss', $sgm_css );
 	}
-
 }

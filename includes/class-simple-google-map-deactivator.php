@@ -31,8 +31,6 @@ class Simple_Google_Map_Deactivator {
 	 */
 	public static function deactivate() {
 
-		delete_option('SGMoptions');
-
+		delete_option( 'SGMoptions' );
 	}
-
 }

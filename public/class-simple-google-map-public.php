@@ -55,7 +55,7 @@ class Simple_Google_Map_Public {
 	 * @since    3.0.0
 	 *
 	 * @param      string $plugin_name The name of the plugin.
-	 * @param      string $version The version of this plugin.
+	 * @param      string $version     The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -85,8 +85,8 @@ class Simple_Google_Map_Public {
 	 */
 	public function output_css() {
 
-		$SGMoptions = get_option( 'SGMoptions' );
-		if ( isset( $SGMoptions['nostyle'] ) ) {
+		$sgm_options = get_option( 'SGMoptions' );
+		if ( isset( $sgm_options['nostyle'] ) ) {
 			return;
 		}
 
@@ -103,23 +103,21 @@ class Simple_Google_Map_Public {
 	 */
 	public function map( $atts ) {
 
-		$SGMoptions = get_option( 'SGMoptions' ); // get options defined in admin page
+		$sgm_options = get_option( 'SGMoptions' ); // get options defined in admin page
 
-		$lat          = isset( $atts['lat'] ) ? $atts['lat'] : '0';
-		$lng          = isset( $atts['lng'] ) ? $atts['lng'] : '0';
-		$zoom         = isset( $atts['zoom'] ) ? $atts['zoom'] : $SGMoptions['zoom'];
-		$type         = isset( $atts['type'] ) ? strtoupper( $atts['type'] ) : $SGMoptions['type'];
-		$content      = isset( $atts['content'] ) ? $atts['content'] : $SGMoptions['content'];
-		$directionsto = isset( $atts['directionsto'] ) ? $atts['directionsto'] : '';
+		$lat           = isset( $atts['lat'] ) ? $atts['lat'] : '0';
+		$lng           = isset( $atts['lng'] ) ? $atts['lng'] : '0';
+		$zoom          = isset( $atts['zoom'] ) ? $atts['zoom'] : $sgm_options['zoom'];
+		$type          = isset( $atts['type'] ) ? strtoupper( $atts['type'] ) : $sgm_options['type'];
+		$content       = isset( $atts['content'] ) ? $atts['content'] : $sgm_options['content'];
+		$directions_to = isset( $atts['directionsto'] ) ? $atts['directionsto'] : '';
 
-		$content        = htmlspecialchars_decode( $content );
-		$directionsForm = '';
-		if ( $directionsto ) {
-			$directionsForm = "<form method=\"get\" action=\"//maps.google.com/maps\"><input type=\"hidden\" name=\"daddr\" value=\"" . $directionsto . "\" /><input type=\"text\" class=\"text\" name=\"saddr\" /><input type=\"submit\" class=\"submit\" value=\"Directions\" /></form>";
+		$content         = htmlspecialchars_decode( $content );
+		$directions_form = '';
+		if ( $directions_to ) {
+			$directions_form = '<form method="get" action="//maps.google.com/maps"><input type="hidden" name="daddr" value="' . $directions_to . '" /><input type="text" class="text" name="saddr" /><input type="submit" class="submit" value="Directions" /></form>';
 		}
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/simple-google-map-public-display.php';
-
 	}
-
 }

@@ -59,5 +59,4 @@ class Simple_Google_Map_i18n {
 	public function set_domain( $domain ) {
 		$this->domain = $domain;
 	}
-
 }
