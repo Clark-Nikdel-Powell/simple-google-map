@@ -3,8 +3,8 @@ Contributors: taylor_cnp, gwelser
 Donate link: http://clarknikdelpowell.com/pay
 Tags: google, google map, google maps, simple google map, no api key
 Requires at least: 3.0.1
-Tested up to: 4.4
-Stable tag: 3.1
+Tested up to: 4.5.3
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,10 @@ The shortcode name is SGM and here are the options..
 * content – what goes inside the infoWindow (speech bubble) that appears when the marker is clicked.
 
 == Changelog ==
+
+= 3.2 =
+* Code cleanup per [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
+* Return rendered shortcode instead of echoing.
 
 = 3.1 =
 * Add directions form to info bubble when directionsto is provided.

@@ -118,6 +118,36 @@ class Simple_Google_Map_Public {
 			$directions_form = '<form method="get" action="//maps.google.com/maps"><input type="hidden" name="daddr" value="' . $directions_to . '" /><input type="text" class="text" name="saddr" /><input type="submit" class="submit" value="Directions" /></form>';
 		}
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/simple-google-map-public-display.php';
+		$map = '<script type="text/javascript">';
+		$map .= "function makeMap() {
+				var latlng = new google.maps.LatLng($lat, $lng);
+				var myOptions = {
+					zoom: $zoom,
+					center: latlng,
+					mapTypeControl: true,
+					mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+					navigationControl: true,
+					navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+					mapTypeId: google.maps.MapTypeId.$type
+				};
+				var map = new google.maps.Map(document.getElementById('SGM'), myOptions);
+				var contentstring = '<div class=\"infoWindow\">$content $directions_to $directions_form</div>';
+				var infowindow = new google.maps.InfoWindow({
+					content: contentstring
+				});
+				var marker = new google.maps.Marker({
+					position: latlng,
+					map: map,
+					title: ''
+				});
+				google.maps.event.addListener(marker, 'click', function() {
+				  infowindow.open(map,marker);
+				});
+			}
+			window.onload = makeMap;";
+		$map .= '</script>';
+		$map .= '<div id="SGM"></div>';
+
+		return $map;
 	}
 }
