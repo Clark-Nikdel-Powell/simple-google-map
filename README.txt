@@ -2,9 +2,9 @@
 Contributors: taylor_cnp, gwelser
 Donate link: http://clarknikdelpowell.com/pay
 Tags: google, google map, google maps, simple google map, no api key
-Requires at least: 3.0.1
+Requires at least: 3.2
 Tested up to: 4.5.3
-Stable tag: 3.2
+Stable tag: 3.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,9 +48,14 @@ The shortcode name is SGM and here are the options..
 
 == Changelog ==
 
+= 3.2.1 =
+* Revert arrays to long syntax for compatibility with PHP 5.3.
+* Move strip_last_chars function to base class.
+
 = 3.2 =
 * Code cleanup per [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
 * Return rendered shortcode instead of echoing.
+* Convert arrays to short syntax.
 
 = 3.1 =
 * Add directions form to info bubble when directionsto is provided.

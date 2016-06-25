@@ -43,7 +43,7 @@ class Simple_Google_Map {
 	 *
 	 * @since    3.0.0
 	 * @access   protected
-	 * @var      Simple_Google_Map_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Simple_Google_Map_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -52,7 +52,7 @@ class Simple_Google_Map {
 	 *
 	 * @since    3.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -61,7 +61,7 @@ class Simple_Google_Map {
 	 *
 	 * @since    3.0.0
 	 * @access   protected
-	 * @var      string    $plugin_path    The string path of this plugin.
+	 * @var      string $plugin_path The string path of this plugin.
 	 */
 	protected $plugin_path;
 
@@ -70,7 +70,7 @@ class Simple_Google_Map {
 	 *
 	 * @since    3.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -86,7 +86,7 @@ class Simple_Google_Map {
 	public function __construct() {
 
 		$this->plugin_name = 'simple-google-map';
-		$this->version = '3.0.0';
+		$this->version     = '3.0.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -208,6 +208,7 @@ class Simple_Google_Map {
 	 * @since    3.0.0
 	 */
 	public function run() {
+
 		$this->loader->run();
 	}
 
@@ -219,6 +220,7 @@ class Simple_Google_Map {
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
+
 		return $this->plugin_name;
 	}
 
@@ -229,6 +231,7 @@ class Simple_Google_Map {
 	 * @return    Simple_Google_Map_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
+
 		return $this->loader;
 	}
 
@@ -239,6 +242,7 @@ class Simple_Google_Map {
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {
+
 		return $this->version;
 	}
 
@@ -249,6 +253,41 @@ class Simple_Google_Map {
 	 * @return    string    The path of the plugin.
 	 */
 	public function get_plugin_path() {
+
 		return $this->plugin_path;
+	}
+
+	/**
+	 * Removes the specified string from the end of the target string.
+	 *
+	 * @since 3.2
+	 *
+	 * @param string       $haystack
+	 * @param string|Array $needles
+	 *
+	 * @return string
+	 */
+	public static function strip_last_chars( $haystack, $needles ) {
+
+		if ( empty( $haystack ) ) {
+			return $haystack;
+		}
+
+		if ( ! is_array( $needles ) ) {
+			if ( substr( $haystack, strlen( $needles ) * - 1 ) === $needles ) {
+				$haystack = substr( $haystack, 0, strlen( $haystack ) - strlen( $needles ) );
+			}
+		}
+
+		if ( is_array( $needles ) ) {
+			foreach ( $needles as $needle ) {
+				if ( substr( $haystack, strlen( $needle ) * - 1 ) === $needle ) {
+					$haystack = substr( $haystack, 0, strlen( $haystack ) - strlen( $needle ) );
+					break;
+				}
+			}
+		}
+
+		return $haystack;
 	}
 }

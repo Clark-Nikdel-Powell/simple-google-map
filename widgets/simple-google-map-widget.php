@@ -20,9 +20,9 @@ class Simple_Google_Map_Widget extends WP_Widget {
 		parent::__construct(
 			'simple-google-map-widget',
 			'Simple Google Map',
-			[
+			array(
 				'description' => 'Add a google map to your blog or site',
-			]
+			)
 		);
 
 	}
@@ -138,18 +138,18 @@ class Simple_Google_Map_Widget extends WP_Widget {
 			$directions_to = $directionsto;
 		}
 
-		$content = $this->strip_last_chars( htmlspecialchars_decode( $content ), [
+		$content = Simple_Google_Map::strip_last_chars( htmlspecialchars_decode( $content ), array(
 			'<br>',
 			'<br/>',
 			'<br />',
-		] );
+		) );
 
 		$directions_form = '';
 		if ( $directions_to ) {
 			$directions_form = '<form method="get" action="//maps.google.com/maps"><input type="hidden" name="daddr" value="' . $directions_to . '" /><input type="text" class="text" name="saddr" /><input type="submit" class="submit" value="Directions" /></form>';
 		}
 
-		$infowindow_arr     = [ $content, $directions_to, $directions_form ];
+		$infowindow_arr     = array( $content, $directions_to, $directions_form );
 		$infowindow_content = implode( '<br>', array_filter( $infowindow_arr ) );
 
 		extract( $args );
@@ -191,29 +191,5 @@ class Simple_Google_Map_Widget extends WP_Widget {
 		echo $map;
 
 		echo $after_widget;
-	}
-
-	public function strip_last_chars( $haystack, $needles ) {
-
-		if ( empty( $haystack ) ) {
-			return $haystack;
-		}
-
-		if ( ! is_array( $needles ) ) {
-			if ( substr( $haystack, strlen( $needles ) * - 1 ) === $needles ) {
-				$haystack = substr( $haystack, 0, strlen( $haystack ) - strlen( $needles ) );
-			}
-		}
-
-		if ( is_array( $needles ) ) {
-			foreach ( $needles as $needle ) {
-				if ( substr( $haystack, strlen( $needle ) * - 1 ) === $needle ) {
-					$haystack = substr( $haystack, 0, strlen( $haystack ) - strlen( $needle ) );
-					break;
-				}
-			}
-		}
-
-		return $haystack;
 	}
 }

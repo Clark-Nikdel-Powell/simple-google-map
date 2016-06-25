@@ -61,12 +61,12 @@ class Simple_Google_Map_Admin {
 
 		$this->plugin_name     = $plugin_name;
 		$this->version         = $version;
-		$this->default_options = [
+		$this->default_options = array(
 			'zoom'         => '12',
 			'type'         => 'ROADMAP',
 			'directionsto' => '',
 			'content'      => '',
-		];
+		);
 
 	}
 
@@ -77,7 +77,7 @@ class Simple_Google_Map_Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/simple-google-map-admin.css', [], $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/simple-google-map-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -88,16 +88,16 @@ class Simple_Google_Map_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/simple-google-map-admin.js', [ 'jquery' ], $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/simple-google-map-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
 	public function plugin_menu() {
 
-		add_options_page( 'Simple Google Map', 'Simple Google Map', 'activate_plugins', 'simple-google-map', [
+		add_options_page( 'Simple Google Map', 'Simple Google Map', 'activate_plugins', 'simple-google-map', array(
 			$this,
 			'plugin_options',
-		] );
+		) );
 
 	}
 
