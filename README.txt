@@ -48,6 +48,8 @@ The shortcode name is SGM and here are the options..
 
 == Changelog ==
 
+* Remove direction to address from info window.
+
 = 3.2.1 =
 * Revert arrays to long syntax for compatibility with PHP 5.3.
 * Move strip_last_chars function to base class.

@@ -149,7 +149,7 @@ class Simple_Google_Map_Widget extends WP_Widget {
 			$directions_form = '<form method="get" action="//maps.google.com/maps"><input type="hidden" name="daddr" value="' . $directions_to . '" /><input type="text" class="text" name="saddr" /><input type="submit" class="submit" value="Directions" /></form>';
 		}
 
-		$infowindow_arr     = array( $content, $directions_to, $directions_form );
+		$infowindow_arr     = array( $content, $directions_form );
 		$infowindow_content = implode( '<br>', array_filter( $infowindow_arr ) );
 
 		extract( $args );
