@@ -21,6 +21,7 @@ With this plugin you can insert a google map into your posts, pages, or wigitize
 * Set default options = less necessary shortcode and widget options.
 * Modify the default CSS or turn it off completely and style the map yourself.
 * Add a form for getting directions by simply adding your destination address.
+* Add a custom map marker image.
 * It's simple!
 
 **ADDITIONAL NOTES**
@@ -28,6 +29,7 @@ With this plugin you can insert a google map into your posts, pages, or wigitize
 * There can only be one map one a page. A widget map counts as one.
 * The size of the info window (speech bubble) is dictated by the size of the map, thus the size of the containing div, div#SGM
 * If you wish to use html in the content value in shortcode, be sure and type it in visual mode (not HTML mode). The pointy brackets will be special html characters in HTML mode and are converted back into pointy brackets by the plugin.
+* Custom map marker image must be properly sized. Simple Google Map will *not* resize the image for you.
 
 For an example and more visit [the plugin's homepage](http://clarknikdelpowell.com/wordpress/simple-google-map/ "Simple Google Map by Clark Nikdel Powell").
 
@@ -50,7 +52,8 @@ The shortcode name is SGM and here are the options..
 == Changelog ==
 
 = 3.2.2 =
-* Add ability to use custom marker image with `icon` attribute
+* Add custom map marker image with `icon` attribute
+* Add default custom map marker image via plugin settings page
 * Remove direction to address from info window.
 
 = 3.2.1 =
