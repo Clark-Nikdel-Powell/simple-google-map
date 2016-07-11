@@ -4,7 +4,7 @@ Donate link: http://clarknikdelpowell.com/pay
 Tags: google, google map, google maps, simple google map, no api key
 Requires at least: 3.2
 Tested up to: 4.5.3
-Stable tag: 3.2.1
+Stable tag: 3.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ With this plugin you can insert a google map into your posts, pages, or wigitize
 
 * There can only be one map one a page. A widget map counts as one.
 * The size of the info window (speech bubble) is dictated by the size of the map, thus the size of the containing div, div#SGM
-* If you wish to use html in the content value in shortcode, be sure and type it in visual mode (not HTML mode). the pointy brackets will be special html characters in HTML mode and are converted back into pointy brackets by the plugin.
+* If you wish to use html in the content value in shortcode, be sure and type it in visual mode (not HTML mode). The pointy brackets will be special html characters in HTML mode and are converted back into pointy brackets by the plugin.
 
 For an example and more visit [the plugin's homepage](http://clarknikdelpowell.com/wordpress/simple-google-map/ "Simple Google Map by Clark Nikdel Powell").
 
@@ -39,15 +39,18 @@ For an example and more visit [the plugin's homepage](http://clarknikdelpowell.c
 
 The shortcode name is SGM and here are the options..
 
-* lat [int] – the latitude of the marker and the center of the map.
-* lng [int] – the longitude of the marker and the center of the map.
+* lat [decimal] – the latitude of the marker and the center of the map.
+* lng [decimal] – the longitude of the marker and the center of the map.
 * zoom [int] – the zoom level (1-19).
-* type [int] – the starting map type. possible values are only ROADMAP, SATELLITE, HYBRID, or TERRAIN and must be in uppercase
+* type [string] – the starting map type. possible values are only ROADMAP, SATELLITE, HYBRID, or TERRAIN and must be in uppercase
 * directionsto [string] – the destination address for getting directions. obviously you want this to be the address of your latitude longitude coordinates.
-* content – what goes inside the infoWindow (speech bubble) that appears when the marker is clicked.
+* content [string] – what goes inside the infoWindow (speech bubble) that appears when the marker is clicked.
+* icon [string] - url of an image to use a the map marker. must be a properly formatted URL with scheme. note the image must be properly sized.
 
 == Changelog ==
 
+= 3.2.2 =
+* Add ability to use custom marker image with `icon` attribute
 * Remove direction to address from info window.
 
 = 3.2.1 =

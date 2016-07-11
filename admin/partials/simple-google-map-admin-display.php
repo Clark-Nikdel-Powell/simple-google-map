@@ -15,6 +15,7 @@
 $message_value = isset( $message ) ? $message : '';
 $zoom_value    = isset( $sgm_options['zoom'] ) ? $sgm_options['zoom'] : '';
 $type_value    = isset( $sgm_options['type'] ) ? $sgm_options['type'] : '';
+$icon_value    = isset( $sgm_options['icon'] ) ? $sgm_options['icon'] : '';
 $content_value = isset( $sgm_options['content'] ) ? $sgm_options['content'] : '';
 $editcss_value = isset( $sgm_options['editCSS'] ) ? 'checked="checked"' : '';
 $nostyle_value = isset( $sgm_options['nostyle'] ) ? 'checked="checked"' : '';
@@ -49,6 +50,12 @@ $nostyle_value = isset( $sgm_options['nostyle'] ) ? 'checked="checked"' : '';
 					<input type="text" name="type" value="<?php echo $type_value ?>"/><br/>
 					<span class="description">ROADMAP, SATELLITE, HYBRID, or TERRAIN</span>
 				</td>
+			</tr>
+
+			<tr>
+				<th><label for="icon">Icon</label></th>
+				<td><input name="icon" type="text"
+						value="<?php echo esc_url( $icon_value, array( 'http', 'https' ) ) ?>"/></td>
 			</tr>
 
 			<tr valign="top">

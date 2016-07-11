@@ -64,6 +64,7 @@ class Simple_Google_Map_Admin {
 		$this->default_options = array(
 			'zoom'         => '12',
 			'type'         => 'ROADMAP',
+			'icon'         => '',
 			'directionsto' => '',
 			'content'      => '',
 		);
@@ -113,6 +114,7 @@ class Simple_Google_Map_Admin {
 
 			$new_options['zoom']    = is_numeric( $_POST['zoom'] ) ? sanitize_text_field( $_POST['zoom'] ) : '';
 			$new_options['type']    = strtoupper( sanitize_text_field( $_POST['type'] ) );
+			$new_options['icon']    = esc_url_raw( $_POST['icon'], array( 'http', 'https' ) );
 			$new_options['content'] = $_POST['content'];
 			if ( isset( $_POST['editCSS'] ) ) {
 				$new_options['editCSS'] = $_POST['editCSS'];
@@ -131,6 +133,8 @@ class Simple_Google_Map_Admin {
 			$message = '<div id="message" class="updated"><p>Simple Google Map settings updated.</p></div>';
 		} else {
 			$sgm_options = get_option( 'SGMoptions' );
+			$sgm_options = wp_parse_args( array_filter( $sgm_options ), $this->default_options );
+
 			$sgm_css     = get_option( 'SGMcss' );
 		}
 

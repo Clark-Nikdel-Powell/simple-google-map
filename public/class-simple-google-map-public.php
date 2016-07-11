@@ -111,6 +111,10 @@ class Simple_Google_Map_Public {
 		$type          = isset( $atts['type'] ) ? strtoupper( $atts['type'] ) : $sgm_options['type'];
 		$content       = isset( $atts['content'] ) ? $atts['content'] : $sgm_options['content'];
 		$directions_to = isset( $atts['directionsto'] ) ? $atts['directionsto'] : '';
+		$icon          = isset( $atts['icon'] ) ? esc_url( $atts['icon'], array(
+			'http',
+			'https',
+		) ) : $sgm_options['icon'];
 
 		$content = Simple_Google_Map::strip_last_chars( htmlspecialchars_decode( $content ), array(
 			'<br>',
@@ -123,7 +127,21 @@ class Simple_Google_Map_Public {
 			$directions_form = '<form method="get" action="//maps.google.com/maps"><input type="hidden" name="daddr" value="' . $directions_to . '" /><input type="text" class="text" name="saddr" /><input type="submit" class="submit" value="Directions" /></form>';
 		}
 
-		$infowindow_arr     = array( $content, $directions_to, $directions_form );
+		$marker = "var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			title: '',";
+
+		if ( $icon ) {
+			$icon = "var image = {
+				url: '$icon',
+			};";
+			$marker .= "\n" . 'icon: image,' . "\n";
+		}
+
+		$marker .= '});';
+
+		$infowindow_arr     = array( $content, $directions_form );
 		$infowindow_content = implode( '<br>', array_filter( $infowindow_arr ) );
 
 		$map = '<script type="text/javascript">';
@@ -143,15 +161,12 @@ class Simple_Google_Map_Public {
 				var infowindow = new google.maps.InfoWindow({
 					content: contentstring
 				});
-				var marker = new google.maps.Marker({
-					position: latlng,
-					map: map,
-					title: ''
-				});
+				$icon
+				$marker
 				google.maps.event.addListener(marker, 'click', function() {
 				  infowindow.open(map,marker);
 				});
-			}
+			};
 			window.onload = makeMap;";
 		$map .= '</script>';
 		$map .= '<div id="SGM"></div>';

@@ -34,6 +34,7 @@ class Simple_Google_Map_Activator {
 		$sgm_defaults = array(
 			'zoom'         => '12',
 			'type'         => 'ROADMAP',
+			'icon'         => '',
 			'directionsto' => '',
 			'content'      => '',
 		);
