@@ -104,6 +104,7 @@ class Simple_Google_Map_Public {
 	public function map( $atts ) {
 
 		$sgm_options = get_option( 'SGMoptions' ); // get options defined in admin page
+		$sgm_options = wp_parse_args( $sgm_options, Simple_Google_Map::$default_options );
 
 		$lat           = isset( $atts['lat'] ) ? $atts['lat'] : '0';
 		$lng           = isset( $atts['lng'] ) ? $atts['lng'] : '0';

@@ -61,13 +61,7 @@ class Simple_Google_Map_Admin {
 
 		$this->plugin_name     = $plugin_name;
 		$this->version         = $version;
-		$this->default_options = array(
-			'zoom'         => '12',
-			'type'         => 'ROADMAP',
-			'icon'         => '',
-			'directionsto' => '',
-			'content'      => '',
-		);
+		$this->default_options = Simple_Google_Map::$default_options;
 
 	}
 

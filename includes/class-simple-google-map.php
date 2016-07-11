@@ -74,6 +74,14 @@ class Simple_Google_Map {
 	 */
 	protected $version;
 
+	static $default_options = array(
+		'zoom'         => '12',
+		'type'         => 'ROADMAP',
+		'icon'         => '',
+		'directionsto' => '',
+		'content'      => '',
+	);
+
 	/**
 	 * Define the core functionality of the plugin.
 	 *
