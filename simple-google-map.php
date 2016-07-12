@@ -16,7 +16,7 @@
  * Plugin Name:       Simple Google Map
  * Plugin URI:        http://clarknikdelpowell.com/wordpress/simple-google-map
  * Description:       Embed a google map using shortcode or as a widget.
- * Version:           3.2.1
+ * Version:           3.3
  * Author:            Taylor Gorman, Glenn Welser
  * Author URI:        http://clarknikdelpowell.com
  * License:           GPL-2.0+

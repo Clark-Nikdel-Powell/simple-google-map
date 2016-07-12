@@ -74,6 +74,12 @@ class Simple_Google_Map {
 	 */
 	protected $version;
 
+	/**
+	 * Default map options
+	 *
+	 * @since 3.3
+	 * @var array
+	 */
 	static $default_options = array(
 		'zoom'         => '12',
 		'type'         => 'ROADMAP',
@@ -94,7 +100,7 @@ class Simple_Google_Map {
 	public function __construct() {
 
 		$this->plugin_name = 'simple-google-map';
-		$this->version     = '3.2.2';
+		$this->version     = '3.3';
 
 		$this->load_dependencies();
 		$this->set_locale();
