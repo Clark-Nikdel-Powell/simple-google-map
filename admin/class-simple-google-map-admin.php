@@ -106,6 +106,7 @@ class Simple_Google_Map_Admin {
 
 		if ( isset( $_POST['submit'] ) ) {
 
+			$new_options['api_key'] = sanitize_text_field( $_POST['api_key'] );
 			$new_options['zoom']    = is_numeric( $_POST['zoom'] ) ? sanitize_text_field( $_POST['zoom'] ) : '';
 			$new_options['type']    = strtoupper( sanitize_text_field( $_POST['type'] ) );
 			$new_options['icon']    = esc_url_raw( $_POST['icon'], array( 'http', 'https' ) );
@@ -129,7 +130,7 @@ class Simple_Google_Map_Admin {
 			$sgm_options = get_option( 'SGMoptions' );
 			$sgm_options = wp_parse_args( array_filter( $sgm_options ), $this->default_options );
 
-			$sgm_css     = get_option( 'SGMcss' );
+			$sgm_css = get_option( 'SGMcss' );
 		}
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/simple-google-map-admin-display.php';
