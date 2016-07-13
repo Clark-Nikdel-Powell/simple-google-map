@@ -4,7 +4,7 @@ Donate link: http://clarknikdelpowell.com/pay
 Tags: google, google map, google maps, simple google map, no api key
 Requires at least: 3.2
 Tested up to: 4.5.3
-Stable tag: 4.0
+Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,9 @@ The shortcode name is SGM and here are the options..
 * icon [string] - url of an image to use a the map marker. must be a properly formatted URL with scheme. note the image must be properly sized.
 
 == Changelog ==
+
+= 4.1 =
+* Add custom map marker to widget options
 
 = 4.0 =
 * Add support for Google Maps API Key
