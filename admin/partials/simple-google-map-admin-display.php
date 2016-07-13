@@ -13,6 +13,7 @@
  */
 
 $message_value = isset( $message ) ? $message : '';
+$api_key_value = isset( $sgm_options['api_key'] ) ? $sgm_options['api_key'] : '';
 $zoom_value    = isset( $sgm_options['zoom'] ) ? $sgm_options['zoom'] : '';
 $type_value    = isset( $sgm_options['type'] ) ? $sgm_options['type'] : '';
 $icon_value    = isset( $sgm_options['icon'] ) ? $sgm_options['icon'] : '';
@@ -35,6 +36,18 @@ $nostyle_value = isset( $sgm_options['nostyle'] ) ? 'checked="checked"' : '';
 	<form action="" method="post">
 
 		<table class="form-table">
+
+			<tr valign="top">
+				<th><label for="key">API Key</label></th>
+				<td>
+					<input name="api_key" type="text" value="<?php echo $api_key_value ?>"/><br/>
+					<span class="description">You may need an API Key. See this <a
+							href="http://googlegeodevelopers.blogspot.com.au/2016/06/building-for-scale-updates-to-google.html"
+							target="_blank">Google Developers post</a> for more info.<br/>
+					Go to the <a href="https://console.developers.google.com"
+							target="_blank">Google Maps API Console</a> and create a Google Maps JavaScript API key.</span>
+				</td>
+			</tr>
 
 			<tr valign="top">
 				<th><label for="zoom">Zoom Level</label></th>

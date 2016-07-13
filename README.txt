@@ -4,7 +4,7 @@ Donate link: http://clarknikdelpowell.com/pay
 Tags: google, google map, google maps, simple google map, no api key
 Requires at least: 3.2
 Tested up to: 4.5.3
-Stable tag: 3.3
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,9 @@ This plugin will embed a google map using shortcode or as a widget.
 
 == Description ==
 
-With this plugin you can insert a google map into your posts, pages, or wigitized sidebar *without an API key*.  Google recently released version 3 of their Maps API. They made it smaller and faster, but with less features. The biggest advantage is that it doesn’t require an API key. So all you have to do is install this plugin and set a few options! Lucky you.
+With this plugin you can insert a google map into your posts, pages, or wigitized sidebar *without an API key*.  Google recently released version 3 of their Maps API. They made it smaller and faster, but with less features.
+
+**If your site was not using the Google Maps API key as of June 22, 2016, Google now requires the use of an API key. [More information in this Google Developers post](http://googlegeodevelopers.blogspot.com.au/2016/06/building-for-scale-updates-to-google.html). You can get a Google Maps Javascript API Key from the [Google Developers API Console](https://console.developers.google.com).**
 
 **FEATURES**
 
@@ -50,6 +52,9 @@ The shortcode name is SGM and here are the options..
 * icon [string] - url of an image to use a the map marker. must be a properly formatted URL with scheme. note the image must be properly sized.
 
 == Changelog ==
+
+= 4.0 =
+* Add support for Google Maps API Key
 
 = 3.3 =
 * Add custom map marker image with `icon` attribute

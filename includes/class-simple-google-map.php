@@ -81,6 +81,7 @@ class Simple_Google_Map {
 	 * @var array
 	 */
 	static $default_options = array(
+		'api_key'      => '',
 		'zoom'         => '12',
 		'type'         => 'ROADMAP',
 		'icon'         => '',

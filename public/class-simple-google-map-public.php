@@ -73,7 +73,14 @@ class Simple_Google_Map_Public {
 
 		global $post;
 		if ( has_shortcode( $post->post_content, 'SGM' ) || is_active_widget( false, false, 'simple-google-map-widget', true ) ) {
-			wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js' );
+			$source = 'https://maps.googleapis.com/maps/api/js';
+
+			$api_key = $this->get_api_key();
+			if ( $api_key ) {
+				$source .= '?key=' . $api_key;
+			}
+
+			wp_enqueue_script( 'google-maps', $source );
 		}
 
 	}
@@ -173,5 +180,19 @@ class Simple_Google_Map_Public {
 		$map .= '<div id="SGM"></div>';
 
 		return $map;
+	}
+
+	/**
+	 * Get the Google Maps API Key
+	 *
+	 * @since   4.0.0
+	 */
+	public function get_api_key() {
+
+		$sgm_options = get_option( 'SGMoptions' );
+		$sgm_options = wp_parse_args( $sgm_options, Simple_Google_Map::$default_options );
+		$api_key     = $sgm_options['api_key'];
+
+		return $api_key;
 	}
 }
