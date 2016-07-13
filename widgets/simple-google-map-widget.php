@@ -41,6 +41,7 @@ class Simple_Google_Map_Widget extends WP_Widget {
 		$type         = isset( $instance['type'] ) ? esc_attr( $instance['type'] ) : '';
 		$directionsto = isset( $instance['directionsto'] ) ? esc_attr( $instance['directionsto'] ) : '';
 		$content      = isset( $instance['content'] ) ? esc_attr( $instance['content'] ) : '';
+		$icon         = isset( $instance['icon'] ) ? esc_url( $instance['icon'] ) : '';
 
 		?>
 		<p>
@@ -69,6 +70,11 @@ class Simple_Google_Map_Widget extends WP_Widget {
 				for="<?php echo $this->get_field_id( 'type' ) ?>"><?php _e( 'Map Type:<br /><small>(ROADMAP, SATELLITE, HYBRID, TERRAIN)</small>' ) ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'type' ) ?>"
 				name="<?php echo $this->get_field_name( 'type' ) ?>" type="text" value="<?php echo $type ?>"/>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'icon' ) ?>"><?php _e( 'Icon:' ) ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'icon' ) ?>"
+				name="<?php echo $this->get_field_name( 'icon' ) ?>" type="text" value="<?php echo $icon ?>"/>
 		</p>
 		<p>
 			<label
@@ -101,6 +107,7 @@ class Simple_Google_Map_Widget extends WP_Widget {
 		$instance['type']         = esc_attr( $new_instance['type'] );
 		$instance['directionsto'] = esc_attr( $new_instance['directionsto'] );
 		$instance['content']      = esc_attr( $new_instance['content'] );
+		$instance['icon']         = esc_attr( $new_instance['icon'] );
 
 		return $instance;
 
@@ -116,6 +123,7 @@ class Simple_Google_Map_Widget extends WP_Widget {
 		extract( $instance );
 
 		$sgm_options = get_option( 'SGMoptions' ); // get options defined in admin page
+		$sgm_options = wp_parse_args( $sgm_options, Simple_Google_Map::$default_options );
 
 		if ( ! $lat ) {
 			$lat = '0';
@@ -129,6 +137,9 @@ class Simple_Google_Map_Widget extends WP_Widget {
 		if ( ! $type ) {
 			$type = $sgm_options['type'];
 		} // ROADMAP, SATELLITE, HYBRID, TERRAIN
+		if ( ! $icon ) {
+			$icon = $sgm_options['icon'];
+		}
 		if ( ! $content ) {
 			$content = $sgm_options['content'];
 		}
@@ -148,6 +159,20 @@ class Simple_Google_Map_Widget extends WP_Widget {
 		if ( $directions_to ) {
 			$directions_form = '<form method="get" action="//maps.google.com/maps"><input type="hidden" name="daddr" value="' . $directions_to . '" /><input type="text" class="text" name="saddr" /><input type="submit" class="submit" value="Directions" /></form>';
 		}
+
+		$marker = "var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			title: '',";
+
+		if ( $icon ) {
+			$icon = "var image = {
+				url: '$icon',
+			};";
+			$marker .= "\n" . 'icon: image,' . "\n";
+		}
+
+		$marker .= '});';
 
 		$infowindow_arr     = array( $content, $directions_form );
 		$infowindow_content = implode( '<br>', array_filter( $infowindow_arr ) );
@@ -175,11 +200,8 @@ class Simple_Google_Map_Widget extends WP_Widget {
 				var infowindow = new google.maps.InfoWindow({
 					content: contentstring
 				});
-				var marker = new google.maps.Marker({
-					position: latlng,
-					map: map,
-					title: ''
-				});
+				$icon
+				$marker
 				google.maps.event.addListener(marker, 'click', function() {
 				  infowindow.open(map,marker);
 				});
