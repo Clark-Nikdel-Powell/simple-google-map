@@ -119,6 +119,7 @@ class Simple_Google_Map_Public {
 		$type          = isset( $atts['type'] ) ? strtoupper( $atts['type'] ) : $sgm_options['type'];
 		$content       = isset( $atts['content'] ) ? $atts['content'] : $sgm_options['content'];
 		$directions_to = isset( $atts['directionsto'] ) ? $atts['directionsto'] : '';
+		$auto_open     = isset( $atts['autoopen'] ) ? $atts['autoopen'] : false;
 		$icon          = isset( $atts['icon'] ) ? esc_url( $atts['icon'], array(
 			'http',
 			'https',
@@ -141,7 +142,7 @@ class Simple_Google_Map_Public {
 			title: '',";
 
 		if ( $icon ) {
-			$icon = "var image = {
+			$icon   = "var image = {
 				url: '$icon',
 			};";
 			$marker .= "\n" . 'icon: image,' . "\n";
@@ -151,6 +152,8 @@ class Simple_Google_Map_Public {
 
 		$infowindow_arr     = array( $content, $directions_form );
 		$infowindow_content = implode( '<br>', array_filter( $infowindow_arr ) );
+
+		$infowindow_open = $auto_open ? 'infowindow.open(map,marker);' . "\n" : '';
 
 		$map = '<script type="text/javascript">';
 		$map .= "function makeMap() {
@@ -174,6 +177,7 @@ class Simple_Google_Map_Public {
 				google.maps.event.addListener(marker, 'click', function() {
 				  infowindow.open(map,marker);
 				});
+				$infowindow_open
 			};
 			window.onload = makeMap;";
 		$map .= '</script>';

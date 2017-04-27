@@ -3,8 +3,8 @@ Contributors: taylor_cnp, gwelser
 Donate link: http://clarknikdelpowell.com/pay
 Tags: google, google map, google maps, simple google map, no api key
 Requires at least: 3.2
-Tested up to: 4.5.3
-Stable tag: 4.1
+Tested up to: 4.7.4
+Stable tag: 4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,8 +50,12 @@ The shortcode name is SGM and here are the options..
 * directionsto [string] – the destination address for getting directions. obviously you want this to be the address of your latitude longitude coordinates.
 * content [string] – what goes inside the infoWindow (speech bubble) that appears when the marker is clicked.
 * icon [string] - url of an image to use a the map marker. must be a properly formatted URL with scheme. note the image must be properly sized.
+* autoopen [string] - true/false - set to true to automatically show the map infowindow.
 
 == Changelog ==
+
+= 4.2 =
+* Add option to auto open infowindow
 
 = 4.1 =
 * Add custom map marker to widget options

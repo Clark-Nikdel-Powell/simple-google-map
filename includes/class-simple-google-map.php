@@ -87,6 +87,7 @@ class Simple_Google_Map {
 		'icon'         => '',
 		'directionsto' => '',
 		'content'      => '',
+		'autoopen'     => false,
 	);
 
 	/**
@@ -101,7 +102,7 @@ class Simple_Google_Map {
 	public function __construct() {
 
 		$this->plugin_name = 'simple-google-map';
-		$this->version     = '3.3';
+		$this->version     = '4.2';
 
 		$this->load_dependencies();
 		$this->set_locale();
