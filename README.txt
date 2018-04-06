@@ -54,6 +54,9 @@ The shortcode name is SGM and here are the options..
 
 == Changelog ==
 
+= 5.0 =
+* Now with Gutenberg block support
+
 = 4.2 =
 * Add option to auto open infowindow
 

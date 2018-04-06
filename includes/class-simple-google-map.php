@@ -194,6 +194,8 @@ class Simple_Google_Map {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		$this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'enqueue_block_editor_assets' );
+
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'plugin_menu' );
 
 		$this->loader->add_action( 'widgets_init', $plugin_admin, 'register_widgets' );
@@ -210,6 +212,8 @@ class Simple_Google_Map {
 	private function define_public_hooks() {
 
 		$plugin_public = new Simple_Google_Map_Public( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action( 'init', $plugin_public, 'block_init' );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'wp_head', $plugin_public, 'output_css' );
@@ -278,7 +282,7 @@ class Simple_Google_Map {
 	 *
 	 * @since 3.2
 	 *
-	 * @param string       $haystack
+	 * @param string $haystack
 	 * @param string|Array $needles
 	 *
 	 * @return string

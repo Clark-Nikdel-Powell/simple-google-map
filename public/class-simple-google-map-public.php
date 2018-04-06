@@ -55,7 +55,7 @@ class Simple_Google_Map_Public {
 	 * @since    3.0.0
 	 *
 	 * @param      string $plugin_name The name of the plugin.
-	 * @param      string $version     The version of this plugin.
+	 * @param      string $version The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -184,6 +184,13 @@ class Simple_Google_Map_Public {
 		$map .= '<div id="SGM"></div>';
 
 		return $map;
+	}
+
+	public function block_init() {
+//		register_block_type( 'simple-google-map/sgm-block', array(
+//				'render_callback' => 'sgm_render',
+//			)
+//		);
 	}
 
 	/**

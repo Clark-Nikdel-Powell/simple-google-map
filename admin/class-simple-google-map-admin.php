@@ -55,7 +55,7 @@ class Simple_Google_Map_Admin {
 	 * @since    3.0.0
 	 *
 	 * @param      string $plugin_name The name of this plugin.
-	 * @param      string $version     The version of this plugin.
+	 * @param      string $version The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -85,6 +85,23 @@ class Simple_Google_Map_Admin {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/simple-google-map-admin.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+	public function enqueue_block_editor_assets() {
+		wp_enqueue_script(
+			'column_block-cgb-block-js',
+			plugins_url( 'js/block.js', __FILE__ ),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
+			null
+		);
+
+		// Styles.
+		wp_enqueue_style(
+			'column_block-cgb-block-editor-css',
+			plugins_url( 'admin/js/block.css', __FILE__ ),
+			array( 'wp-edit-blocks' ),
+			null
+		);
 	}
 
 	public function plugin_menu() {
