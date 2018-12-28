@@ -102,7 +102,7 @@ class Simple_Google_Map {
 	public function __construct() {
 
 		$this->plugin_name = 'simple-google-map';
-		$this->version     = '4.2';
+		$this->version     = '4.3';
 
 		$this->load_dependencies();
 		$this->set_locale();

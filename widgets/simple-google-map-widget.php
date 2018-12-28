@@ -44,57 +44,57 @@ class Simple_Google_Map_Widget extends WP_Widget {
 		$icon         = isset( $instance['icon'] ) ? esc_url( $instance['icon'] ) : '';
 
 		?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>"
-					name="<?php echo $this->get_field_name( 'title' ) ?>" type="text" value="<?php echo $title ?>"/>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'lat' ) ?>"><?php _e( 'Latitude:' ) ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'lat' ) ?>"
-					name="<?php echo $this->get_field_name( 'lat' ) ?>" type="text" value="<?php echo $lat ?>"/>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'lng' ) ?>"><?php _e( 'Longitude:' ) ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'lng' ) ?>"
-					name="<?php echo $this->get_field_name( 'lng' ) ?>" type="text" value="<?php echo $lng ?>"/>
-		</p>
-		<p>
-			<label
-					for="<?php echo $this->get_field_id( 'zoom' ) ?>"><?php _e( 'Zoom Level: <small>(1-19)</small>' ) ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'zoom' ) ?>"
-					name="<?php echo $this->get_field_name( 'zoom' ) ?>" type="text" value="<?php echo $zoom ?>"/>
-		</p>
-		<p>
-			<label
-					for="<?php echo $this->get_field_id( 'type' ) ?>"><?php _e( 'Map Type:<br /><small>(ROADMAP, SATELLITE, HYBRID, TERRAIN)</small>' ) ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'type' ) ?>"
-					name="<?php echo $this->get_field_name( 'type' ) ?>" type="text" value="<?php echo $type ?>"/>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'icon' ) ?>"><?php _e( 'Icon:' ) ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'icon' ) ?>"
-					name="<?php echo $this->get_field_name( 'icon' ) ?>" type="text" value="<?php echo $icon ?>"/>
-		</p>
-		<p>
-			<label
-					for="<?php echo $this->get_field_id( 'directionsto' ) ?>"><?php _e( 'Address for directions:' ) ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'directionsto' ) ?>"
-					name="<?php echo $this->get_field_name( 'directionsto' ) ?>" type="text"
-					value="<?php echo $directionsto ?>"/>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'content' ) ?>"><?php _e( 'Info Bubble Content:' ) ?></label>
-			<textarea rows="7" class="widefat" id="<?php echo $this->get_field_id( 'content' ) ?>"
-					name="<?php echo $this->get_field_name( 'content' ) ?>"><?php echo $content ?></textarea>
-		</p>
-		<p>
-			<label>
-				<input name="<?php echo $this->get_field_name( 'autoopen' ) ?>" type="checkbox"
-						<?php checked( $instance['autoopen'], 'on' ) ?>>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>"
+                   name="<?php echo $this->get_field_name( 'title' ) ?>" type="text" value="<?php echo $title ?>"/>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'lat' ) ?>"><?php _e( 'Latitude:' ) ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'lat' ) ?>"
+                   name="<?php echo $this->get_field_name( 'lat' ) ?>" type="text" value="<?php echo $lat ?>"/>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'lng' ) ?>"><?php _e( 'Longitude:' ) ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'lng' ) ?>"
+                   name="<?php echo $this->get_field_name( 'lng' ) ?>" type="text" value="<?php echo $lng ?>"/>
+        </p>
+        <p>
+            <label
+                    for="<?php echo $this->get_field_id( 'zoom' ) ?>"><?php _e( 'Zoom Level: <small>(1-19)</small>' ) ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'zoom' ) ?>"
+                   name="<?php echo $this->get_field_name( 'zoom' ) ?>" type="text" value="<?php echo $zoom ?>"/>
+        </p>
+        <p>
+            <label
+                    for="<?php echo $this->get_field_id( 'type' ) ?>"><?php _e( 'Map Type:<br /><small>(ROADMAP, SATELLITE, HYBRID, TERRAIN)</small>' ) ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'type' ) ?>"
+                   name="<?php echo $this->get_field_name( 'type' ) ?>" type="text" value="<?php echo $type ?>"/>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'icon' ) ?>"><?php _e( 'Icon:' ) ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'icon' ) ?>"
+                   name="<?php echo $this->get_field_name( 'icon' ) ?>" type="text" value="<?php echo $icon ?>"/>
+        </p>
+        <p>
+            <label
+                    for="<?php echo $this->get_field_id( 'directionsto' ) ?>"><?php _e( 'Address for directions:' ) ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'directionsto' ) ?>"
+                   name="<?php echo $this->get_field_name( 'directionsto' ) ?>" type="text"
+                   value="<?php echo $directionsto ?>"/>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'content' ) ?>"><?php _e( 'Info Bubble Content:' ) ?></label>
+            <textarea rows="7" class="widefat" id="<?php echo $this->get_field_id( 'content' ) ?>"
+                      name="<?php echo $this->get_field_name( 'content' ) ?>"><?php echo $content ?></textarea>
+        </p>
+        <p>
+            <label>
+                <input name="<?php echo $this->get_field_name( 'autoopen' ) ?>" type="checkbox"
+					<?php checked( $instance['autoopen'], 'on' ) ?>>
 				<?php _e( 'Auto-open Info Bubble' ) ?>
-			</label>
-		</p>
+            </label>
+        </p>
 		<?php
 
 	}
@@ -189,6 +189,8 @@ class Simple_Google_Map_Widget extends WP_Widget {
 
 		$infowindow_arr     = array( $content, $directions_form );
 		$infowindow_content = implode( '<br>', array_filter( $infowindow_arr ) );
+		$infowindow_content = str_replace( "\r", "", $infowindow_content );
+		$infowindow_content = str_replace( "\n", "", $infowindow_content );
 
 		$infowindow_open = $auto_open ? 'infowindow.open(map,marker);' . "\n" : '';
 

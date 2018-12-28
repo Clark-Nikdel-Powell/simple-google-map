@@ -54,6 +54,9 @@ The shortcode name is SGM and here are the options..
 
 == Changelog ==
 
+= 4.3 =
+* Removes line breaks from infowindow_content javascript variable which break map script
+
 = 4.2 =
 * Add option to auto open infowindow
 
