@@ -3,8 +3,8 @@ Contributors: taylor_cnp, gwelser
 Donate link: http://clarknikdelpowell.com/pay
 Tags: google, google map, google maps, simple google map, no api key
 Requires at least: 3.2
-Tested up to: 4.7.4
-Stable tag: 4.2
+Tested up to: 5.0.2
+Stable tag: 4.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ The shortcode name is SGM and here are the options..
 * autoopen [string] - true/false - set to true to automatically show the map infowindow.
 
 == Changelog ==
+
+= 4.3.1 =
+* Removes line breaks from infowindow_content javascript variable which break map script in widget
+* Test with WP 5.0.2
 
 = 4.3 =
 * Removes line breaks from infowindow_content javascript variable which break map script

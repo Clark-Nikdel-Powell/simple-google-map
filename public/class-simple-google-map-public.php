@@ -152,6 +152,8 @@ class Simple_Google_Map_Public {
 
 		$infowindow_arr     = array( $content, $directions_form );
 		$infowindow_content = implode( '<br>', array_filter( $infowindow_arr ) );
+		$infowindow_content = str_replace( "\r", "", $infowindow_content );
+		$infowindow_content = str_replace( "\n", "", $infowindow_content );
 
 		$infowindow_open = $auto_open ? 'infowindow.open(map,marker);' . "\n" : '';
 
